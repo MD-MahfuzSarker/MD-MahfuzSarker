@@ -69,6 +69,6 @@ jobs:
         with:
           commit_message: "📈 Update GitHub metrics [skip ci]"
           branch: main  # Specify the branch where metrics are stored
-          file_pattern: '.github/workflows/metrics.yaml/**'  # Adjust the path based on where metrics are generated
+          file_pattern: '.github/workflows/metrics.yaml'  # Adjust the path based on where metrics are generated
         env:
           GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN }}
