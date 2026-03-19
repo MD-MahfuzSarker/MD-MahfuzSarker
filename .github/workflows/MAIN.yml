@@ -19,12 +19,14 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: read
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: main
 
       - name: Generate Snake Game
         uses: Platane/snk@v3
@@ -35,15 +37,24 @@ jobs:
             dist/github-snake-dark.svg?palette=github-dark
             dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
           build_dir: dist
+          snake_color: '#1f6feb'
+          github_user_contributions: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify Generated Files
+        run: |
+          echo "Checking generated files..."
+          ls -lah dist/ || echo "No dist directory found"
 
       - name: Commit and Push Snake Game
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🐍 Generate snake game animation"
+          commit_message: "🐍 Generate snake game animation [skip ci]"
           file_pattern: dist/
+          commit_options: "--no-verify"
           skip_fetch: false
           skip_checkout: false
+          create_branch: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
