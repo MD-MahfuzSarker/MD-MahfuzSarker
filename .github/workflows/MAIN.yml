@@ -1,3 +1,6 @@
+# GitHub Snake Game Workflow
+# Generates animated snake game consuming GitHub contributions
+
 name: Generate Snake Game
 
 on:
@@ -9,20 +12,38 @@ on:
       - main
   schedule:
     - cron: '0 0 * * *'  # Runs every day at midnight UTC
+  workflow_dispatch:  # Allow manual triggering
 
 jobs:
-  generate:
+  generate-snake:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Generate snake game
-      uses: Platane/snk@v3
-      with:
-        github_user_name: ${{ github.MD-MahfuzSarker }}
-        outputs: |
-          dist/github-snake.svg
-          dist/github-snake-dark.svg?palette=github-dark
-          dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
+      - name: Generate Snake Game
+        uses: Platane/snk@v3
+        with:
+          github_user_name: MD-MahfuzSarker
+          outputs: |
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark
+            dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit and Push Snake Game
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "🐍 Generate snake game animation"
+          file_pattern: dist/
+          skip_fetch: false
+          skip_checkout: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
