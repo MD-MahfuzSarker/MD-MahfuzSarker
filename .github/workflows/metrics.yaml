@@ -1,4 +1,4 @@
-# Visit https://github.com/lowlighter/metrics#-documentation for full reference
+# Visit https://github.com/MD-MahfuzSarker/metrics#-documentation for full reference
 name: GitHub Metrics
 
 on:
@@ -33,7 +33,7 @@ jobs:
           fetch-depth: 1  # Fetch only the latest commit for faster performance
 
       - name: Generate GitHub Metrics
-        uses: lowlighter/metrics@v3.34  # Updated to the correct version
+        uses: MD-MahfuzSarker/metrics@v3.34  # Updated to the correct version
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           user: OfficialCodeVoyage
