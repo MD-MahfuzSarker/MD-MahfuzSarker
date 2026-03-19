@@ -2,7 +2,7 @@
 
 ### Hi, I'm Mahfuz 👋
 
-- 🌱 I’m currently studying Bachelor of science in Computer Science & Engineering at [Southeast University](target="blank"https://seu.edu.bd/)
+- 🌱 I’m currently studying Bachelor of science in Computer Science & Engineering at [Southeast University](https://seu.edu.bd/)
 - 🔭 I’m currently working on :man_shrugging: 
 
 ## 🐍 GitHub Contributions Snake
