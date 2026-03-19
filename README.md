@@ -14,6 +14,10 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+# 👋 Welcome to My GitHub Profile
 
-</Ki6uiPar1Na> 
-![snake gif](https://github.com/MD-MahfuzSarker/MD-MahfuzSarker/blob/output/github-contribution-grid-snake.gif)
+## 🐍 GitHub Contributions Snake
+
+
+## </Ki6uiPar1Na> 
+![snake dark](https://raw.githubusercontent.com/MD-MahfuzSarker/MD-MahfuzSarker/output/dist/github-snake-dark.svg)
