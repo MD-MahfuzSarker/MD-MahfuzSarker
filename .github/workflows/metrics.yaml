@@ -33,7 +33,7 @@ jobs:
           fetch-depth: 1  # Fetch only the latest commit for faster performance
 
       - name: Generate GitHub Metrics
-        uses: MD-MahfuzSarker/metrics@v3.34  # Updated to the correct version
+        uses: MD-MahfuzSarker/metrics@v4  # Updated to the correct version
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           user: OfficialCodeVoyage
