@@ -74,7 +74,7 @@ jobs:
           filename: metrics.svg
 
       - name: Commit and Push Metrics
-        uses: MD-MahfuzSarker/actions-gh-pages@v3
+        uses: MD-MahfuzSarker/actions-gh-pages@master
         with:
           commit_message: "📈 Update GitHub metrics [skip ci]"
           file_pattern: metrics.svg
