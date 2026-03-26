@@ -1,17 +1,12 @@
-# GitHub Metrics Workflow Configuration
-# Documentation: https://github.com/lowlighter/metrics#-documentation
-
 name: GitHub Metrics
 
 on:
   # Schedule updates (daily at midnight UTC)
   schedule:
     - cron: "0 0 * * *"
-
-  # Allow manual triggering of the workflow
+  # Allow manual triggering
   workflow_dispatch:
-
-  # Trigger the workflow on pushes to the main branch
+  # Trigger on pushes to the main branch
   push:
     branches:
       - main
@@ -19,28 +14,20 @@ on:
 jobs:
   github-metrics:
     runs-on: ubuntu-latest
-    environment: production
-
-    # Define minimal required permissions for security
+    
+    # Required permissions to allow the action to commit the SVG file
     permissions:
-      contents: write  # Changed from read to write for commit and push
-      issues: read
-      pull-requests: read
+      contents: write
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Full history for metrics calculation
-          ref: main
-
       - name: Generate GitHub Metrics
         uses: lowlighter/metrics@latest
         with:
+          # The action uses this token to fetch data AND push the final file
           token: ${{ secrets.GITHUB_TOKEN }}
           user: OfficialCodeVoyage
           template: classic
-          base: header,activity,community,repositories,metadata
+          base: header, activity, community, repositories, metadata
           base_indepth: true
           
           # Configuration options
@@ -52,12 +39,12 @@ jobs:
           plugin_languages: true
           plugin_languages_analysis_timeout: 15
           plugin_languages_analysis_timeout_repositories: 7.5
-          plugin_languages_categories: markup,programming
+          plugin_languages_categories: markup, programming
           plugin_languages_colors: github
           plugin_languages_indepth: true
           plugin_languages_limit: 8
           plugin_languages_other: true
-          plugin_languages_recent_categories: markup,programming
+          plugin_languages_recent_categories: markup, programming
           plugin_languages_recent_days: 30
           plugin_languages_recent_load: 300
           plugin_languages_sections: most-used
@@ -70,16 +57,5 @@ jobs:
           plugin_leetcode_sections: solved
           plugin_leetcode_user: officialcodevoyage
           
-          # Output filename
-          filename: metrics.svg
-
-      - name: Commit and Push Metrics
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "📈 Update GitHub metrics [skip ci]"
-          file_pattern: metrics.svg
-          commit_options: "--no-verify"
-          skip_fetch: false
-          skip_checkout: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Output filename (will be committed to the root of your repo)
+          filename: metrics.svg}}
