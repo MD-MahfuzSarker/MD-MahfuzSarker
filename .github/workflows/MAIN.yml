@@ -48,7 +48,7 @@ jobs:
           ls -lah dist/ || echo "No dist directory found"
 
       - name: Commit and Push Snake Game
-        uses: MD-MahfuzSarker/actions-gh-pages@master
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "🐍 Generate snake game animation [skip ci]"
           file_pattern: dist/
