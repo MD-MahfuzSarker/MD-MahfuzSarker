@@ -1,1 +1,63 @@
-# Metrics Workflow\n\nname: Metrics\n\n# Change username to MD-MahfuzSarker\nusername: MD-MahfuzSarker\n\n# Change timezone to Asia/Dhaka\ntimezone: Asia/Dhaka\n\n# Remove LeetCode plugin configuration section\n\n# Your metrics configuration below has been removed.\n\n# Ensure that everything else is configured as needed.\n\n# Example configuration below\n# filename: metrics.svg\n\n# Define other necessary parameters and settings as needed.
+name: GitHub Metrics
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: read
+      pull-requests: read
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Generate GitHub Metrics
+        uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          user: MD-MahfuzSarker
+          template: classic
+          base: header,activity,community,repositories,metadata
+          base_indepth: true
+          config_octicon: true
+          config_timezone: Asia/Dhaka
+          config_twemoji: true
+          
+          plugin_languages: true
+          plugin_languages_analysis_timeout: 15
+          plugin_languages_analysis_timeout_repositories: 7.5
+          plugin_languages_categories: markup,programming
+          plugin_languages_colors: github
+          plugin_languages_indepth: true
+          plugin_languages_limit: 8
+          plugin_languages_other: true
+          plugin_languages_recent_categories: markup,programming
+          plugin_languages_recent_days: 30
+          plugin_languages_recent_load: 300
+          plugin_languages_sections: most-used
+          plugin_languages_threshold: 0%
+          
+          filename: metrics.svg
+
+      - name: Commit and Push Metrics
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "📈 Update GitHub metrics [skip ci]"
+          file_pattern: metrics.svg
+          commit_options: "--no-verify"
+          skip_fetch: false
+          skip_checkout: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
