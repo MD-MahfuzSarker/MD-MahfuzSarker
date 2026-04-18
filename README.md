@@ -7,10 +7,11 @@
 
 ## 🐍 GitHub Contributions Snake
 
- 
+ <div align="center">
+  
 ![snake gif](https://github.com/MD-MahfuzSarker/MD-MahfuzSarker/blob/output/github-snake-dark.svg)
 
-
+ </div>
 
 
 ## <p align="center">***✨ About Me***</p>
