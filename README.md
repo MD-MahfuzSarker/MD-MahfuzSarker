@@ -1,16 +1,22 @@
-## Hi there 👋
+# <p align="center">👋 Welcome👋</p>
 
-<!--
-**MD-MahfuzSarker/MD-MahfuzSarker** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+### Hi, I'm Mahfuz 👋
 
-Here are some ideas to get you started:
+- 🌱 Currently studying Bachelor of Science in Computer Science & Engineering at [Southeast University](https://seu.edu.bd/)
+- 🔭 Working on :man_shrugging: 
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## 🐍 GitHub Contributions Snake
+
+ 
+![snake gif](https://github.com/MD-MahfuzSarker/MD-MahfuzSarker/blob/output/github-snake-dark.svg)
+
+
+
+
+## <p align="center">***✨ About Me***</p>
+
+## <p align="center">***Ki6uiPar1Na***</p>
+
+## <p align="center"> 🙂👍👎</p>
+
+
